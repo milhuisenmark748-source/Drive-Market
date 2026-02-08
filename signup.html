@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CARZ - Join the Club</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"/>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <section id="header">
+        <a href="index.html"><img src="img/logo.png" class="logo" alt=""></a>
+        <div>
+            <ul id="navbar">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="shop.html">Autoshop</a></li>
+                <li><a class="active" href="signup.html">Register</a></li>
+                <li><a href="cart.html"><i class="fas fa-cart-plus"></i></a></li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="form-details" class="login-section">
+        <form id="signup-form">
+            <span>START YOUR JOURNEY</span>
+            <h2>Create Account</h2>
+            <input type="text" id="reg-name" placeholder="Full Name" required>
+            <input type="email" id="reg-email" placeholder="Email Address" required>
+            <input type="text" id="reg-user" placeholder="Choose Username" required>
+            <input type="password" id="reg-pass" placeholder="Password" required>
+            <input type="password" id="reg-pass-confirm" placeholder="Confirm Password" required>
+            
+            <button class="normal login-btn">Register Now</button>
+            <p>Already a member? <a href="login.html">Login here</a></p>
+        </form>
+
+        <div class="login-info">
+            <div class="info-box">
+                <i class="fas fa-car"></i>
+                <div>
+                    <span>VIRTUAL GARAGE</span>
+                    <p>Save your favorite builds and compare specs across our entire exotic collection.</p>
+                </div>
+            </div>
+            <div class="info-box">
+                <i class="fas fa-bell"></i>
+                <div>
+                    <span>INSTANT UPDATES</span>
+                    <p>Be the first to know when limited edition models like the <strong>Jesko</strong> become available.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script type="module" src="java.js"></script>
+</body>
+</html>

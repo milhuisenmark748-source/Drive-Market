@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CARZ - Login</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"/>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <section id="header">
+        <a href="index.html"><img src="img/logo.png" class="logo" alt=""></a>
+        <div>
+            <ul id="navbar">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="shop.html">Autoshop</a></li>
+                <li><a class="active" href="login.html">Login</a></li>
+                <li><a href="cart.html"><i class="fas fa-cart-plus"></i></a></li>
+            </ul>
+        </div>
+    </section>
+
+   <section id="form-details" class="login-section">
+    <form id="login-form">
+        <span>EXOTIC CARS & EXCLUSIVE ACCESS</span>
+        <h2>Member Login</h2>
+        <div class="input-group">
+            <i class="fas fa-user"></i>
+            <input type="text" id="login-username" placeholder="Username" required>
+        </div>
+        <div class="input-group">
+            <i class="fas fa-lock"></i>
+            <input type="password" id="login-password" placeholder="Password" required>
+        </div>
+        <button class="normal login-btn" type="submit">Login to Garage</button>
+        <p>New to CARZ? <a href="signup.html">Create an Account</a></p>
+    </form>
+    
+    <div class="login-info">
+        <div class="info-box">
+            <i class="fas fa-key"></i>
+            <div>
+                <span>AUTHENTIC ACCESS</span>
+                <p>Log in to manage your vehicle pre-orders and track your Jesko Absolut delivery status.</p>
+            </div>
+        </div>
+        <div class="info-box">
+            <i class="fas fa-shield-alt"></i>
+            <div>
+                <span>SECURE DATABASE</span>
+                <p>Your data is protected with the same precision we use to tune our engines.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <script src="firebase.auth.js"></script>
+</body>
+</html>
