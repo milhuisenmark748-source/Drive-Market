@@ -1,3 +1,5 @@
+import { auth } from './firebase.auth.js';
+import { createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-auth.js";
 
 // 2. CAR DATA DATABASE
 const carData = [
@@ -360,7 +362,10 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 
-// 5. FIREBASE AUTHENTICATION
+import { auth } from './firebase.auth.js';
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-auth.js";
+
+// SIGN UP LOGIC
 const signupForm = document.getElementById('signup-form');
 if (signupForm) {
     signupForm.addEventListener('submit', (e) => {
@@ -375,26 +380,33 @@ if (signupForm) {
         }
 
         createUserWithEmailAndPassword(auth, email, pass)
-            .then(() => {
+            .then((userCredential) => {
                 alert("Account created! Welcome to CARZ.");
                 window.location.href = "login.html";
             })
-            .catch((error) => alert(error.message));
+            .catch((error) => {
+                console.error(error);
+                alert(error.message);
+            });
     });
 }
 
+// LOGIN LOGIC
 const loginForm = document.getElementById('login-form');
 if (loginForm) {
     loginForm.addEventListener('submit', (e) => {
         e.preventDefault();
-        const email = document.getElementById('login-username').value;
+        const email = document.getElementById('login-username').value; // Ensure this ID matches your HTML
         const password = document.getElementById('login-password').value;
 
         signInWithEmailAndPassword(auth, email, password)
-            .then(() => {
+            .then((userCredential) => {
                 alert("Login Successful!");
                 window.location.href = "index.html";
             })
-            .catch((error) => alert(error.message));
+            .catch((error) => {
+                console.error(error);
+                alert("Login failed: " + error.message);
+            });
     });
 }
