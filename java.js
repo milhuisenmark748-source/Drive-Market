@@ -166,7 +166,6 @@ window.updatePrices = function(selectElement) {
     if (currentCar) {
         let marketPrice, prePrice, displayImg;
 
-        // Logic for specialized editions vs manual multiplier
         if (currentCar.editions && currentCar.editions[selectedEdition]) {
             marketPrice = currentCar.editions[selectedEdition].m;
             prePrice = currentCar.editions[selectedEdition].p;
@@ -184,7 +183,6 @@ window.updatePrices = function(selectElement) {
             displayImg = currentCar.image;
         }
 
-        // DOM Updates
         const safeSetSrc = (id, src) => { if(document.getElementById(id)) document.getElementById(id).src = src; };
         const safeSetText = (id, text) => { if(document.getElementById(id)) document.getElementById(id).innerText = text; };
 
@@ -203,86 +201,19 @@ window.updatePrices = function(selectElement) {
             safeSetText('spec-weight', currentCar.specs.weight);
         }
 
-        // Update small thumbnails
         const smallImgs = document.getElementsByClassName("smallimg");
         const editionKeys = currentCar.editions ? Object.keys(currentCar.editions) : [];
         for (let i = 0; i < smallImgs.length; i++) {
             smallImgs[i].src = (currentCar.editions && editionKeys[i]) ? currentCar.editions[editionKeys[i]].img : currentCar.image;
         }
-
-        startAutoSlide();
     }
-}
-
-function startAutoSlide() {
-    clearInterval(slideTimer);
-    slideTimer = setInterval(() => {
-        slideIndex++;
-        showSlides(slideIndex);
-    }, 3000);
-}
-
-window.manualSlide = function(n) {
-    slideIndex = n;
-    showSlides(slideIndex);
-    startAutoSlide();
-}
-
-function showSlides(n) {
-    const ovThumbs = document.getElementsByClassName("ov-thumb");
-    const mainOverview = document.getElementById('overview-img');
-    if (ovThumbs.length === 0 || !mainOverview) return;
-    
-    if (n >= ovThumbs.length) slideIndex = 0;
-    if (n < 0) slideIndex = ovThumbs.length - 1;
-
-    for (let i = 0; i < ovThumbs.length; i++) {
-        ovThumbs[i].classList.remove("active");
-        ovThumbs[i].style.borderColor = "transparent";
-    }
-    mainOverview.src = ovThumbs[slideIndex].src;
-    ovThumbs[slideIndex].classList.add("active");
-    ovThumbs[slideIndex].style.borderColor = "#a01705";
 }
 
 /* =========================================
-   3. EVENT LISTENERS (Review Form & Clicks)
-   ========================================= */
-document.addEventListener('DOMContentLoaded', () => {
-    const form = document.getElementById('carz-form');
-    const displayArea = document.getElementById('display-area');
-
-    if (form && displayArea) {
-        form.addEventListener('submit', function(e) {
-            e.preventDefault(); 
-            const nameValue = document.getElementById('user-name').value;
-            const msgValue = document.getElementById('user-msg').value;
-
-            const newReview = document.createElement('div');
-            newReview.style.cssText = "border:1px solid #088178; padding:20px; margin:10px 0; border-radius:10px; background:#f0f8f0;";
-            newReview.innerHTML = `<p>"${msgValue}"</p><h4 style="color:#088178;">- ${nameValue}</h4>`;
-            displayArea.prepend(newReview);
-            form.reset();
-        });
-    }
-
-    const select = document.getElementById('edition-select');
-    if (select) { select.value = "standard"; updatePrices(select); }
-
-    const smallImgs = document.getElementsByClassName("smallimg");
-    for (let i = 0; i < smallImgs.length; i++) {
-        smallImgs[i].onclick = function() {
-            document.getElementById('MainImg').src = this.src;
-            if(document.getElementById('overview-img')) document.getElementById('overview-img').src = this.src;
-        };
-    }
-});
-
-/* =========================================
-   4. FIREBASE AUTH LOGIC
+   3. FIREBASE AUTH LOGIC
    ========================================= */
 
-// SIGN UP
+// Signup Handler
 const signupForm = document.getElementById('signup-form');
 if (signupForm) {
     signupForm.addEventListener('submit', async (e) => {
@@ -303,7 +234,7 @@ if (signupForm) {
             const photoURL = `https://ui-avatars.com/api/?name=${encodeURIComponent(fullName)}&background=a01705&color=fff`;
 
             await updateProfile(user, { displayName: fullName, photoURL: photoURL });
-            alert("Account created! Welcome to CARZ.");
+            alert("Account created successfully!");
             window.location.href = "login.html";
         } catch (error) {
             alert(error.message);
@@ -311,7 +242,7 @@ if (signupForm) {
     });
 }
 
-// LOGIN
+// Login Handler
 const loginForm = document.getElementById('login-form');
 if (loginForm) {
     loginForm.addEventListener('submit', (e) => {
@@ -328,7 +259,7 @@ if (loginForm) {
     });
 }
 
-// AUTH MONITOR & DROPDOWN
+// Profile UI Monitor
 onAuthStateChanged(auth, (user) => {
     const authContainer = document.getElementById('auth-container');
     if (!authContainer) return;
@@ -337,12 +268,12 @@ onAuthStateChanged(auth, (user) => {
         const photoURL = user.photoURL || "img/default-profile.png";
         authContainer.innerHTML = `
             <div class="profile-wrapper" style="position: relative; display: inline-block;">
-                <img src="${photoURL}" class="profile-pic" id="profile-trigger" style="width:40px; height:40px; border-radius:50%; cursor:pointer; border: 2px solid #a01705;">
-                <div class="profile-dropdown" id="profile-menu" style="display:none; position:absolute; right:0; top: 50px; background:white; border:1px solid #ccc; padding:15px; border-radius:8px; z-index:1000; min-width:180px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);">
-                    <p style="margin:0;"><strong>${user.displayName || 'Member'}</strong></p>
+                <img src="${photoURL}" id="profile-trigger" style="width:35px; height:35px; border-radius:50%; cursor:pointer; border: 2px solid white; vertical-align: middle;">
+                <div id="profile-menu" style="display:none; position:absolute; right:0; top: 45px; background:white; border:1px solid #ccc; padding:15px; border-radius:8px; z-index:1000; min-width:180px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); color: #333;">
+                    <p style="margin:0; font-size: 14px;"><strong>${user.displayName || 'Member'}</strong></p>
                     <p style="font-size: 11px; color: gray; margin-bottom:10px;">${user.email}</p>
-                    <hr style="border:0.5px solid #eee;">
-                    <button id="logout-btn" style="background:#a01705; color:white; border:none; padding:8px 10px; cursor:pointer; width:100%; border-radius:4px;">Logout</button>
+                    <hr style="border:0.5px solid #eee; margin: 10px 0;">
+                    <button id="logout-btn" style="background:#a01705; color:white; border:none; padding:8px 10px; cursor:pointer; width:100%; border-radius:4px; font-weight:600;">Logout</button>
                 </div>
             </div>
         `;
@@ -350,15 +281,25 @@ onAuthStateChanged(auth, (user) => {
         const trigger = document.getElementById('profile-trigger');
         const menu = document.getElementById('profile-menu');
         
-        trigger.addEventListener('click', (e) => {
+        trigger.onclick = (e) => {
             e.stopPropagation();
             menu.style.display = menu.style.display === 'none' ? 'block' : 'none';
-        });
+        };
 
-        document.addEventListener('click', () => { menu.style.display = 'none'; });
+        document.addEventListener('click', () => { if(menu) menu.style.display = 'none'; });
 
-        document.getElementById('logout-btn').addEventListener('click', () => {
+        document.getElementById('logout-btn').onclick = () => {
             signOut(auth).then(() => window.location.reload());
-        });
+        };
+    }
+});
+
+// Initialization
+document.addEventListener('DOMContentLoaded', () => {
+    const select = document.getElementById('edition-select');
+    if (select) { 
+        select.value = "standard"; 
+        updatePrices(select); 
+        select.onchange = () => updatePrices(select);
     }
 });
