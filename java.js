@@ -410,3 +410,35 @@ if (loginForm) {
             });
     });
 }
+
+import { auth } from './firebase.auth.js';
+import { onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-auth.js";
+
+// Monitor Login Status
+onAuthStateChanged(auth, (user) => {
+    const authContainer = document.getElementById('auth-container');
+    
+    if (user) {
+        // User is signed in - Replace "Sign In" with a Profile Photo
+        // Using a placeholder image since we haven't uploaded a custom one yet
+        const photoURL = user.photoURL ? user.photoURL : "img/default-profile.png"; 
+        
+        authContainer.innerHTML = `
+            <div class="profile-wrapper">
+                <img src="${photoURL}" class="profile-pic" id="profile-trigger">
+                <div class="profile-dropdown" id="profile-menu">
+                    <p>${user.email}</p>
+                    <button id="logout-btn">Logout</button>
+                </div>
+            </div>
+        `;
+
+        // Logout Logic
+        document.getElementById('logout-btn').addEventListener('click', () => {
+            signOut(auth).then(() => {
+                alert("Logged out!");
+                window.location.reload();
+            });
+        });
+    }
+});
