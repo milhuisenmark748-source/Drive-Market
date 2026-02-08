@@ -2,91 +2,71 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Comptible" content="IE=edge">
-    <meta name="viewport" content="width-device-width,initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <title>CARZ</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"/>
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
- <section id="header">
-<a href="#"><img src="img/logo.png" class="logo" alt=""></a>
-
-<script src="java.js"></script>
-
-<div>
-    <ul id="navbar">
-    <li><a class="active" href="index.html">Home</a></li>
-    <li><a href="shop.html">Autoshop</a></li>
-    <li><a href="feed.html">Feed</a></li>
-    <li id="auth-container">
-        <a href="login.html" id="login-link">Sign In</a>
-    </li>
-    <li><a href="cart.html"><i class="fas fa-cart-plus"></i></a></li>
-</ul>
-</div>
-
-</section>
-<section id="autoshop">
- 
-</section>
+<section id="header">
+    <a href="index.html"><img src="img/logo.png" class="logo" alt=""></a>
+    <div>
+        <ul id="navbar">
+            <li><a class="active" href="index.html">Home</a></li>
+            <li><a href="shop.html">Autoshop</a></li>
+            <li><a href="feed.html">Feed</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Connect</a></li>
+            <li id="auth-container"><a href="login.html" id="login-link">Sign In</a></li>
+            <li><a href="cart.html"><i class="fas fa-cart-plus"></i></a></li>
+        </ul>
     </div>
 </section>
 
-
-<a href="shop.html" class="Button1">Visit Autoshop</a>
-    <script src="scripts,js"></script>
+<section id="autoshop">
+    <div class="content">
+        <a href="shop.html" class="Button1">Visit Autoshop</a>
+    </div>
+</section>
 
 <section id="feature" class="section-p1">
     <div class="featurebox">
-        <img src="img/features/s.png" alt="The image cannot be loaded due to poor network quality">
+        <img src="img/features/s.png" alt="Direct Shipping">
         <h6>Direct Shipping</h6>
-
     </div>
-
-        <div class="featurebox">
-        <img src="img/features/t.png" alt="The image cannot be loaded due to poor network quality">
+    <div class="featurebox">
+        <img src="img/features/t.png" alt="Tax and Duty">
         <h6>Tax and Duty Handled</h6>
     </div>
-
-
     <div class="featurebox">
-        <img src="img/features/v.png" alt="The image cannot be loaded due to poor network quality">
-        <h6>Cetified Inspection</h6>
+        <img src="img/features/v.png" alt="Certified Inspection">
+        <h6>Certified Inspection</h6>
     </div>
-
     <div class="featurebox">
-        <img src="img/features/w.png" alt="The image cannot be loaded due to poor network quality">
+        <img src="img/features/w.png" alt="Secure Pay">
         <h6>Secure Advanced Pay</h6>
     </div>
-
-
     <div class="featurebox">
-        <img src="img/features/g.png" alt="The image cannot be loaded due to poor network quality">
+        <img src="img/features/g.png" alt="Tracking">
         <h6>Real time Tracking</h6>
     </div>
-
-
     <div class="featurebox">
-        <img src="img/features/h.png" alt="The image cannot be loaded due to poor network quality">
+        <img src="img/features/h.png" alt="Delivery">
         <h6>Doorstep Delivery</h6>
-
     </div>
-
 </section>
 
 <section id="automobile1" class="section-p1">
     <h2>Showroom Spotlights</h2>
     <p>The Season's Finest</p>
     <div class="pro-container">
-    <div class="pro" onclick="localStorage.setItem('carID', 1); window.location.href='sproduct.html';">
-    <img src="img/products/f1 jesko.jpeg" alt="">
+        <div class="pro" onclick="localStorage.setItem('carID', 1); window.location.href='sproduct.html';">
+            <img src="img/products/f1 jesko.jpeg" alt="">
             <div class="des">
                 <span>Konigsegg</span>
                 <h5>Konigsegg Jesko Absolut (2020)</h5>
-                
-    
                 <div class="star">
                     <i class="fas fa-star"></i>
                     <i class="fas fa-star"></i>
@@ -96,20 +76,16 @@
                 </div>
                 <h6>Full Price</h6>
                 <h4>$3,000,000</h4>
-
                 <h6>Pre-Order Price</h6>
                 <h4>$300,000</h4>
             </div>
-            <a href="#"><i class="fal fas fa-cart-plus"></i></a>
+            <a href="#"><i class="fas fa-cart-plus"></i></a>
         </div>
-
-  <div class="pro" onclick="localStorage.setItem('carID', 2); window.location.href='sproduct.html';">
-    <img src="img/products/Bugatti.jpeg" alt="">
+        <div class="pro" onclick="localStorage.setItem('carID', 2); window.location.href='sproduct.html';">
+            <img src="img/products/Bugatti.jpeg" alt="">
             <div class="des">
                 <span>Bugatti</span>
                 <h5>Bugatti Chiron Super Sport 300+ (2021)</h5>
-                
-    
                 <div class="star">
                     <i class="fas fa-star"></i>
                     <i class="fas fa-star"></i>
@@ -119,20 +95,16 @@
                 </div>
                 <h6>Full Price</h6>
                 <h4>$4,300,000</h4>
-
                 <h6>Pre-Order Price</h6>
                 <h4>$430,000</h4>
             </div>
-            <a href="#"><i class="fal fas fa-cart-plus"></i></a>
+            <a href="#"><i class="fas fa-cart-plus"></i></a>
         </div>
-        
         <div class="pro" onclick="localStorage.setItem('carID', 3); window.location.href='sproduct.html';">
-    <img src="img/products/Lambo.jpeg" alt="">
+            <img src="img/products/Lambo.jpeg" alt="">
             <div class="des">
                 <span>Lamborghini</span>
                 <h5>Lamborghini Veneno (2014)</h5>
-                
-    
                 <div class="star">
                     <i class="fas fa-star"></i>
                     <i class="fas fa-star"></i>
@@ -142,20 +114,16 @@
                 </div>
                 <h6>Full Price</h6>
                 <h4>$4,500,000</h4>
-
                 <h6>Pre-Order Price</h6>
                 <h4>$450,000</h4>
             </div>
-            <a href="#"><i class="fal fas fa-cart-plus"></i></a>
+            <a href="#"><i class="fas fa-cart-plus"></i></a>
         </div>
-        
-  <div class="pro" onclick="localStorage.setItem('carID', 4); window.location.href='sproduct.html';">
-    <img src="img/products/senna.jpeg" alt="">
+        <div class="pro" onclick="localStorage.setItem('carID', 4); window.location.href='sproduct.html';">
+            <img src="img/products/senna.jpeg" alt="">
             <div class="des">
                 <span>Mclaren</span>
                 <h5>Mclaren Senna (2018)</h5>
-                
-    
                 <div class="star">
                     <i class="fas fa-star"></i>
                     <i class="fas fa-star"></i>
@@ -165,20 +133,16 @@
                 </div>
                 <h6>Full Price</h6>
                 <h4>$1,200,000</h4>
-
                 <h6>Pre-Order Price</h6>
                 <h4>$120,000</h4>
             </div>
-            <a href="#"><i class="fal fas fa-cart-plus"></i></a>
+            <a href="#"><i class="fas fa-cart-plus"></i></a>
         </div>
-        
-  <div class="pro" onclick="localStorage.setItem('carID', 5); window.location.href='sproduct.html';">
-    <img src="img/products/Ferrari.jpeg" alt="">
+        <div class="pro" onclick="localStorage.setItem('carID', 5); window.location.href='sproduct.html';">
+            <img src="img/products/Ferrari.jpeg" alt="">
             <div class="des">
                 <span>Ferrari</span>
                 <h5>Ferrari F40 (1992)</h5>
-                
-    
                 <div class="star">
                     <i class="fas fa-star"></i>
                     <i class="fas fa-star"></i>
@@ -188,20 +152,16 @@
                 </div>
                 <h6>Full Price</h6>
                 <h4>$2,200,000</h4>
-
                 <h6>Pre-Order Price</h6>
                 <h4>$220,000</h4>
             </div>
-            <a href="#"><i class="fal fas fa-cart-plus"></i></a>
+            <a href="#"><i class="fas fa-cart-plus"></i></a>
         </div>
-        
-  <div class="pro" onclick="localStorage.setItem('carID', 6); window.location.href='sproduct.html';">
-    <img src="img/products/nfs.jpeg" alt="">
+        <div class="pro" onclick="localStorage.setItem('carID', 6); window.location.href='sproduct.html';">
+            <img src="img/products/nfs.jpeg" alt="">
             <div class="des">
                 <span>BMW</span>
                 <h5>BMW M3 GTR (2001)</h5>
-                
-    
                 <div class="star">
                     <i class="fas fa-star"></i>
                     <i class="fas fa-star"></i>
@@ -211,20 +171,16 @@
                 </div>
                 <h6>Full Price</h6>
                 <h4>$2,000,000</h4>
-
                 <h6>Pre-Order Price</h6>
                 <h4>$200,000</h4>
             </div>
-            <a href="#"><i class="fal fas fa-cart-plus"></i></a>
+            <a href="#"><i class="fas fa-cart-plus"></i></a>
         </div>
-        
-    <div class="pro" onclick="localStorage.setItem('carID', 7); window.location.href='sproduct.html';">
-    <img src="img/products/EVO.jpeg" alt="">
+        <div class="pro" onclick="localStorage.setItem('carID', 7); window.location.href='sproduct.html';">
+            <img src="img/products/EVO.jpeg" alt="">
             <div class="des">
                 <span>MITSUBISHI</span>
                 <h5>Mitsubishi Lancer Evolution MR (2005)</h5>
-                
-    
                 <div class="star">
                     <i class="fas fa-star"></i>
                     <i class="fas fa-star"></i>
@@ -234,20 +190,16 @@
                 </div>
                 <h6>Full Price</h6>
                 <h4>$185,000</h4>
-
                 <h6>Pre-Order Price</h6>
                 <h4>$18,500</h4>
             </div>
-            <a href="#"><i class="fal fas fa-cart-plus"></i></a>
+            <a href="#"><i class="fas fa-cart-plus"></i></a>
         </div>
-        
-  <div class="pro" onclick="localStorage.setItem('carID', 8); window.location.href='sproduct.html';">
-    <img src="img/products/nissan nismo.jpeg" alt="">
+        <div class="pro" onclick="localStorage.setItem('carID', 8); window.location.href='sproduct.html';">
+            <img src="img/products/nissan nismo.jpeg" alt="">
             <div class="des">
                 <span>Nissan</span>
-                <h5>Nissan GTR R35 Nismo SE (2022) </h5>
-                
-    
+                <h5>Nissan GTR R35 Nismo SE (2022)</h5>
                 <div class="star">
                     <i class="fas fa-star"></i>
                     <i class="fas fa-star"></i>
@@ -256,19 +208,14 @@
                     <i class="fas fa-star"></i>
                 </div>
                 <h6>Full Price</h6>
-                <h4>$300,000,</h4>
-
+                <h4>$300,000</h4>
                 <h6>Pre-Order Price</h6>
                 <h4>$30,000</h4>
             </div>
-            <a href="#"><i class="fal fas fa-cart-plus"></i></a>
+            <a href="#"><i class="fas fa-cart-plus"></i></a>
         </div>
-        
-        
     </div>
 </section>
-
-
 
 <section id="banner" class="section-m1">
     <h4>Beat the showroom rush</h4>
@@ -279,13 +226,11 @@
     <h2>New Arrivals</h2>
     <p>Choose the latest Rides</p>
     <div class="pro-container">
-  <div class="pro" onclick="localStorage.setItem('carID', 9); window.location.href='sproduct.html';">
-    <img src="img/products/r34.jpeg" alt="">
+        <div class="pro" onclick="localStorage.setItem('carID', 9); window.location.href='sproduct.html';">
+            <img src="img/products/r34.jpeg" alt="">
             <div class="des">
                 <span>Nissan</span>
                 <h5>Nissan Sky-line GTR R34 (2002)</h5>
-                
-    
                 <div class="star">
                     <i class="fas fa-star"></i>
                     <i class="fas fa-star"></i>
@@ -295,20 +240,16 @@
                 </div>
                 <h6>Full Price</h6>
                 <h4>$3,000,000</h4>
-
                 <h6>Pre-Order Price</h6>
                 <h4>$300,000</h4>
             </div>
-            <a href="#"><i class="fal fas fa-cart-plus"></i></a>
+            <a href="#"><i class="fas fa-cart-plus"></i></a>
         </div>
-
-  <div class="pro" onclick="localStorage.setItem('carID', 10); window.location.href='sproduct.html';">
-    <img src="img/products/honda.png" alt="">
+        <div class="pro" onclick="localStorage.setItem('carID', 10); window.location.href='sproduct.html';">
+            <img src="img/products/honda.png" alt="">
             <div class="des">
                 <span>Honda</span>
                 <h5>Honda Civic Type R (2026)</h5>
-                
-    
                 <div class="star">
                     <i class="fas fa-star"></i>
                     <i class="fas fa-star"></i>
@@ -318,20 +259,16 @@
                 </div>
                 <h6>Full Price</h6>
                 <h4>$48,000</h4>
-
                 <h6>Pre-Order Price</h6>
                 <h4>$4,800</h4>
             </div>
-            <a href="#"><i class="fal fas fa-cart-plus"></i></a>
+            <a href="#"><i class="fas fa-cart-plus"></i></a>
         </div>
-        
-  <div class="pro" onclick="localStorage.setItem('carID', 11); window.location.href='sproduct.html';">
-    <img src="img/products/poshe.jpeg" alt="">
+        <div class="pro" onclick="localStorage.setItem('carID', 11); window.location.href='sproduct.html';">
+            <img src="img/products/poshe.jpeg" alt="">
             <div class="des">
                 <span>Porsche</span>
                 <h5>Porsche 911 GT3 RS (2016)</h5>
-                
-    
                 <div class="star">
                     <i class="fas fa-star"></i>
                     <i class="fas fa-star"></i>
@@ -341,20 +278,16 @@
                 </div>
                 <h6>Full Price</h6>
                 <h4>$245,000</h4>
-
                 <h6>Pre-Order Price</h6>
                 <h4>$24,500</h4>
             </div>
-            <a href="#"><i class="fal fas fa-cart-plus"></i></a>
+            <a href="#"><i class="fas fa-cart-plus"></i></a>
         </div>
-        
-    <div class="pro" onclick="localStorage.setItem('carID', 12); window.location.href='sproduct.html';">
-    <img src="img/products/aston martin db -10.png" alt="">
+        <div class="pro" onclick="localStorage.setItem('carID', 12); window.location.href='sproduct.html';">
+            <img src="img/products/aston martin db -10.png" alt="">
             <div class="des">
                 <span>Aston Martin</span>
                 <h5>Aston Martin DB-10 Bond Edition (2016)</h5>
-                
-    
                 <div class="star">
                     <i class="fas fa-star"></i>
                     <i class="fas fa-star"></i>
@@ -364,20 +297,16 @@
                 </div>
                 <h6>Full Price</h6>
                 <h4>$3,500,000</h4>
-
                 <h6>Pre-Order Price</h6>
                 <h4>$350,000</h4>
             </div>
-            <a href="#"><i class="fal fas fa-cart-plus"></i></a>
+            <a href="#"><i class="fas fa-cart-plus"></i></a>
         </div>
-        
-  <div class="pro" onclick="localStorage.setItem('carID', 13); window.location.href='sproduct.html';">
-    <img src="img/products/bugati rv.jpeg" alt="">
+        <div class="pro" onclick="localStorage.setItem('carID', 13); window.location.href='sproduct.html';">
+            <img src="img/products/bugati rv.jpeg" alt="">
             <div class="des">
                 <span>Buggatti</span>
                 <h5> Buggatti RV Motohome (2026)</h5>
-                
-    
                 <div class="star">
                     <i class="fas fa-star"></i>
                     <i class="fas fa-star"></i>
@@ -387,20 +316,16 @@
                 </div>
                 <h6>Full Price</h6>
                 <h4>$23,500,000</h4>
-
                 <h6>Pre-Order Price</h6>
                 <h4>$2,300,000</h4>
             </div>
-            <a href="#"><i class="fal fas fa-cart-plus"></i></a>
+            <a href="#"><i class="fas fa-cart-plus"></i></a>
         </div>
-        
-  <div class="pro" onclick="localStorage.setItem('carID', 14); window.location.href='sproduct.html';">
-    <img src="img/products/breaking bad rv.png" alt="">
+        <div class="pro" onclick="localStorage.setItem('carID', 14); window.location.href='sproduct.html';">
+            <img src="img/products/breaking bad rv.png" alt="">
             <div class="des">
                 <span>Fleetwood</span>
-                <h5>Bounder Breaking Bad Edition(1986)</h5>
-                
-    
+                <h5>Bounder Breaking Bad Edition (1986)</h5>
                 <div class="star">
                     <i class="fas fa-star"></i>
                     <i class="fas fa-star"></i>
@@ -410,20 +335,16 @@
                 </div>
                 <h6>Full Price</h6>
                 <h4>$85,000</h4>
-
                 <h6>Pre-Order Price</h6>
                 <h4>$8,500</h4>
             </div>
-            <a href="#"><i class="fal fas fa-cart-plus"></i></a>
+            <a href="#"><i class="fas fa-cart-plus"></i></a>
         </div>
-        
-  <div class="pro" onclick="localStorage.setItem('carID', 15); window.location.href='sproduct.html';">
-    <img src="img/products/suv land rover.png" alt="">
+        <div class="pro" onclick="localStorage.setItem('carID', 15); window.location.href='sproduct.html';">
+            <img src="img/products/suv land rover.png" alt="">
             <div class="des">
                 <span>Land Rover</span>
                 <h5>Land Rover Defender Station Wagon (2016)</h5>
-                
-    
                 <div class="star">
                     <i class="fas fa-star"></i>
                     <i class="fas fa-star"></i>
@@ -433,20 +354,16 @@
                 </div>
                 <h6>Full Price</h6>
                 <h4>$110,000</h4>
-
                 <h6>Pre-Order Price</h6>
                 <h4>$11,000</h4>
             </div>
-            <a href="#"><i class="fal fas fa-cart-plus"></i></a>
+            <a href="#"><i class="fas fa-cart-plus"></i></a>
         </div>
-        
-  <div class="pro" onclick="localStorage.setItem('carID', 16); window.location.href='sproduct.html';">
-    <img src="img/products/rr suv.png" alt="">
+        <div class="pro" onclick="localStorage.setItem('carID', 16); window.location.href='sproduct.html';">
+            <img src="img/products/rr suv.png" alt="">
             <div class="des">
                 <span>Land Rover</span>
                 <h5>Range Rover Sport (2025)</h5>
-                
-    
                 <div class="star">
                     <i class="fas fa-star"></i>
                     <i class="fas fa-star"></i>
@@ -456,22 +373,18 @@
                 </div>
                 <h6>Full Price</h6>
                 <h4>$210,000</h4>
-
                 <h6>Pre-Order Price</h6>
                 <h4>$21,000</h4>
             </div>
-            <a href="#"><i class="fal fas fa-cart-plus"></i></a>
+            <a href="#"><i class="fas fa-cart-plus"></i></a>
         </div>
-        
-        
     </div>
 </section>
-
 
 <section id="smbanner" class="section-p1">
     <div class="banner-box">
         <h4>Premium Ride</h4>
-        <h2>Conquer Every Mile With Your</h2>
+        <h2>Conquer Every Mile</h2>
         <button class="white">Explore Collection</button>
     </div>
     <div class="banner-box banner-box2">
@@ -479,20 +392,11 @@
     </div>
 </section>
 
-<section class="banner-container">
-    <div class="banner-img banner-1"></div>
-    <div class="banner-img banner-2"></div>
-    <div class="banner-img banner-3"></div>
-</section>
-
-</section>
- 
 <section id="newsletter" class="section-p1 section-m1">
     <div class="newsntext">
-    <h4>Join With Us For Newsletter </h4>
-    <p>Check out Email updates about latest automobiles and <span>spacial deals</span></p>
+        <h4>Join Our Newsletter</h4>
+        <p>Email updates about latest automobiles and <span>special deals</span></p>
     </div>
-
     <div class="form">
         <input type="text" placeholder="Email address">
         <button class="normal">Sign Up</button>
@@ -502,11 +406,10 @@
 <footer class="section-p1">
     <div class="col">
         <img class="logo" src="img/logo.png" alt="">
-        <h4>contact</h4>
-        <p><strong>Address: </strong> 526, Darmapala Road,Colombo</p>
+        <h4>Contact</h4>
+        <p><strong>Address: </strong> 526, Darmapala Road, Colombo</p>
         <p><strong>Phone: </strong> 0711236890</p>
         <p><strong>Hours: </strong> 10.00 - 18.00, Mon - Sat</p>
-
         <div class="follow">
             <h4>Follow Us</h4>
             <div class="icon">
@@ -518,52 +421,37 @@
             </div>
         </div>
     </div>
-<div class="col">
-    <h4>About</h4>
-    <a href="#">About us</a>
-    <a href="#">Delivery Information </a>
-    <a href="#">Privacy Policy</a>
-    <a href="#">Contact Us</a>
-</div>
-
-
-<div class="col">
-    <h4>My Account</h4>
-    <a href="login.html">Sign In </a>
-    <a href="#">View Cart</a>
-    <a href="#">My Wishlist</a>
-    <a href="#">Track My Order</a>
-    <a href="#">Help</a>
-</div>
-
-<div class="col install">
-    <h4>Install App</h4>
-    <p>From App Store or Google Play</p>
-    <div class="row">
-        <img src="img/pay/app.jpg" alt="">
-        <img src="img/pay/play.jpg" alt="">
-
+    <div class="col">
+        <h4>About</h4>
+        <a href="#">About us</a>
+        <a href="#">Delivery Information</a>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Contact Us</a>
     </div>
-
-    <p>From App Store or Google Play</p>
-    <img src="img/pay/pay.png">
-
-</div>
-
-<div class="copyright">
-    <p>@ 2026, Drive.Market etc - The Global Vehicle Ecommerce Platform </p>
-</div>
-    
+    <div class="col">
+        <h4>My Account</h4>
+        <a href="login.html">Sign In</a>
+        <a href="#">View Cart</a>
+        <a href="#">My Wishlist</a>
+        <a href="#">Track My Order</a>
+        <a href="#">Help</a>
+    </div>
+    <div class="col install">
+        <h4>Install App</h4>
+        <p>From App Store or Google Play</p>
+        <div class="row">
+            <img src="img/pay/app.jpg" alt="">
+            <img src="img/pay/play.jpg" alt="">
+        </div>
+        <p>Secured Payment Gateways</p>
+        <img src="img/pay/pay.png" alt="">
+    </div>
+    <div class="copyright">
+        <p>© 2026, CARZ - The Global Vehicle Ecommerce Platform</p>
+    </div>
 </footer>
 
-
-
-
-      <img src="img/text.png" class="featuretext">
-    <img src="img/banner/car.png"class="cars">
-
-
+<script type="module" src="firebase.auth.js"></script>
+<script type="module" src="java.js"></script>
 </body>
-
 </html>
-
