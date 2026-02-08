@@ -8,13 +8,12 @@ import {
 } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-auth.js";
 
 
-// 1. CAR DATA DATABASE (Keeping your original data)
-
+   1. CAR DATA DATABASE
 const carData = [
     {
         id: 1,
-        brand: "Konigsegg",
-        name: "Konigsegg Jesko Absolut (2020)",
+        brand: "Koenigsegg",
+        name: "Koenigsegg Jesko Absolut (2020)",
         fullPrice: "$3,000,000",
         preOrderPrice: "$300,000",
         image: "img/products/f1 jesko.jpeg",
@@ -23,8 +22,8 @@ const carData = [
         specs: { speed: "531 km/h+", accel: "2.5s", engine: "5.0L V8 Bi-Turbo", weight: "1,390 kg" },
         editions: {
             "standard": { m: 3000000, p: 300000, img: "img/products/f1 jesko.jpeg" },
-            "Primium":  { m: 4300000, p: 430000, img: "img/products/kprimiumed.png" },
-            "Spacial":  { m: 4800000, p: 480000, img: "img/products/kjspecialed.png" },
+            "Premium":  { m: 4300000, p: 430000, img: "img/products/kprimiumed.png" },
+            "Special":  { m: 4800000, p: 480000, img: "img/products/kjspecialed.png" },
             "Collector": { m: 6500000, p: 650000, img: "img/products/kjcollectored.png" }
         }
     },
@@ -36,12 +35,12 @@ const carData = [
         preOrderPrice: "$430,000",
         image: "img/products/Bugatti.jpeg",
         description: "The Bugatti Chiron Super Sport is the ultimate grand tourer, combining brutal power with absolute luxury.",
-        history: "The 300+ edition celebrates Bugatti becoming the first manufacturer to break the 300mph barrier with a production-based car.",
+        history: "The 300+ edition celebrates Bugatti becoming the first manufacturer to break the 300mph barrier.",
         specs: { speed: "490 km/h", accel: "2.4s", engine: "8.0L W16 Quad-Turbo", weight: "1,977 kg" },
         editions: {
             "standard": { m: 4300000, p: 430000, img: "img/products/Bugatti.jpeg" },
-            "Primium":  { m: 5100000, p: 510000, img: "img/products/buggatiprimiumed.png" },
-            "Spacial":  { m: 6200000, p: 620000, img: "img/products/spacialedition.png" },
+            "Premium":  { m: 5100000, p: 510000, img: "img/products/buggatiprimiumed.png" },
+            "Special":  { m: 6200000, p: 620000, img: "img/products/spacialedition.png" },
             "Collector": { m: 7500000, p: 750000, img: "img/products/Bugatticollector.png" }
         }
     },
@@ -53,29 +52,29 @@ const carData = [
         preOrderPrice: "$450,000",
         image: "img/products/Lambo.jpeg",
         description: "One of the rarest cars in the world, designed to celebrate Lamborghini's 50th anniversary.",
-        history: "With only a handful of units ever produced, the Veneno focuses on optimum aerodynamics to provide the feel of a racing prototype.",
+        history: "With only a handful of units ever produced, the Veneno focuses on optimum aerodynamics.",
         specs: { speed: "355 km/h", accel: "2.8s", engine: "6.5L V12", weight: "1,490 kg" },
         editions: {
             "standard": { m: 4500000, p: 450000, img: "img/products/Lambo.jpeg" },
-            "Primium":  { m: 4800000, p: 480000, img: "img/products/LAMBOPRED.png" },
-            "Spacial":  { m: 5500000, p: 550000, img: "img/products/LAMBOSPED.png" },
+            "Premium":  { m: 4800000, p: 480000, img: "img/products/LAMBOPRED.png" },
+            "Special":  { m: 5500000, p: 550000, img: "img/products/LAMBOSPED.png" },
             "Collector": { m: 6200000, p: 620000, img: "img/products/LAMBOCOLLECTED.png" }
         }
     },
     {
         id: 4,
-        brand: "Mclaren",
-        name: "Mclaren Senna (2018)",
+        brand: "McLaren",
+        name: "McLaren Senna (2018)",
         fullPrice: "$1,200,000",
         preOrderPrice: "$120,000",
         image: "img/products/senna.jpeg",
         description: "Named after the legendary F1 driver, built for the track.",
-        history: "The Senna is the personification of McLaren’s DNA at its most extreme, creating the purest connection between car and driver.",
+        history: "The Senna is the personification of McLaren’s DNA at its most extreme.",
         specs: { speed: "335 km/h", accel: "2.8s", engine: "4.0L V8 Twin-Turbo", weight: "1,198 kg" },
         editions: {
             "standard": { m: 1200000, p: 120000, img: "img/products/senna.jpeg" },
-            "Primium":  { m: 1800000, p: 180000, img: "img/products/SENNAPRED.png" },
-            "Spacial":  { m: 2300000, p: 230000, img: "img/products/SENNASPED.png" },
+            "Premium":  { m: 1800000, p: 180000, img: "img/products/SENNAPRED.png" },
+            "Special":  { m: 2300000, p: 230000, img: "img/products/SENNASPED.png" },
             "Collector": { m: 3000000, p: 300000, img: "img/products/SENNACOLLECTED.png" }
         }
     },
@@ -91,136 +90,71 @@ const carData = [
         specs: { speed: "324 km/h", accel: "4.1s", engine: "2.9L Twin-Turbo V8", weight: "1,250 kg" },
         editions: {
             "standard": { m: 2200000, p: 220000, img: "img/products/Ferrari.jpeg" },
-            "Primium":  { m: 2500000, p: 250000, img: "img/products/ff40PRED.png" },
-            "Spacial":  { m: 2800000, p: 280000, img: "img/products/ff40SPED.png" },
+            "Premium":  { m: 2500000, p: 250000, img: "img/products/ff40PRED.png" },
+            "Special":  { m: 2800000, p: 280000, img: "img/products/ff40SPED.png" },
             "Collector": { m: 3900000, p: 390000, img: "img/products/ff40CED.png" }
         }
     },
     {
-        id: 6,
-        brand: "BMW",
-        name: "BMW M3 GTR (2001)",
-        fullPrice: "$2,000,000",
-        preOrderPrice: "$200,000",
-        image: "img/products/nfs.jpeg",
-        description: "The hero car of Need for Speed: Most Wanted.",
-        history: "A race car for the road, the E46 M3 GTR featured a powerful V8, a rarity for the M3 lineup at the time.",
+        id: 6, brand: "BMW", name: "BMW M3 GTR (2001)", fullPrice: "$2,000,000", preOrderPrice: "$200,000",
+        image: "img/products/nfs.jpeg", description: "The hero car of Need for Speed: Most Wanted.",
         specs: { speed: "295 km/h", accel: "4.0s", engine: "4.0L V8", weight: "1,350 kg" }
     },
     {
-        id: 7,
-        brand: "MITSUBISHI",
-        name: "Mitsubishi Lancer Evolution MR (2005)",
-        fullPrice: "$185,000",
-        preOrderPrice: "$18,500",
-        image: "img/products/EVO.jpeg",
-        description: "A rally legend for the road.",
-        history: "The Evo IX MR represents the pinnacle of Mitsubishi's rally-inspired performance sedans.",
+        id: 7, brand: "MITSUBISHI", name: "Mitsubishi Lancer Evolution MR (2005)", fullPrice: "$185,000", preOrderPrice: "$18,500",
+        image: "img/products/EVO.jpeg", description: "A rally legend for the road.",
         specs: { speed: "250 km/h", accel: "4.8s", engine: "2.0L Turbo I4", weight: "1,400 kg" }
     },
     {
-        id: 8,
-        brand: "Nissan",
-        name: "Nissan GTR R35 Nismo SE (2022)",
-        fullPrice: "$300,000",
-        preOrderPrice: "$30,000",
-        image: "img/products/nissan nismo.jpeg",
-        description: "The ultimate evolution of the R35 platform.",
-        history: "Nismo engineering brings GT3 racing tech to the street, featuring carbon fiber components and enhanced turbos.",
+        id: 8, brand: "Nissan", name: "Nissan GTR R35 Nismo SE (2022)", fullPrice: "$300,000", preOrderPrice: "$30,000",
+        image: "img/products/nissan nismo.jpeg", description: "The ultimate evolution of the R35 platform.",
         specs: { speed: "315 km/h", accel: "2.5s", engine: "3.8L V6 Twin-Turbo", weight: "1,703 kg" }
     },
     {
-        id: 9,
-        brand: "Nissan",
-        name: "Nissan Sky-line GTR R34 (2002)",
-        fullPrice: "$3,000,000",
-        preOrderPrice: "$300,000",
-        image: "img/products/r34.jpeg",
-        description: "The icon of JDM culture, known as Godzilla.",
-        history: "Famous for its RB26 engine and advanced ATTESA E-TS AWD system, it dominated Group A racing.",
+        id: 9, brand: "Nissan", name: "Nissan Sky-line GTR R34 (2002)", fullPrice: "$3,000,000", preOrderPrice: "$300,000",
+        image: "img/products/r34.jpeg", description: "The icon of JDM culture, known as Godzilla.",
         specs: { speed: "250 km/h", accel: "4.7s", engine: "2.6L Twin-Turbo I6", weight: "1,560 kg" }
     },
     {
-        id: 10,
-        brand: "Honda",
-        name: "Honda Civic Type R (2026)",
-        fullPrice: "$48,000",
-        preOrderPrice: "$4,800",
-        image: "img/products/honda.png",
-        description: "The most powerful Civic ever built.",
-        history: "A continuation of Honda's quest for the fastest front-wheel-drive production car title.",
+        id: 10, brand: "Honda", name: "Honda Civic Type R (2026)", fullPrice: "$48,000", preOrderPrice: "$4,800",
+        image: "img/products/honda.png", description: "The most powerful Civic ever built.",
         specs: { speed: "275 km/h", accel: "5.4s", engine: "2.0L Turbo I4", weight: "1,430 kg" }
     },
     {
-        id: 11,
-        brand: "Porsche",
-        name: "Porsche 911 GT3 RS (2016)",
-        fullPrice: "$245,000",
-        preOrderPrice: "$24,500",
-        image: "img/products/poshe.jpeg",
-        description: "Precision engineering for the perfect driving experience.",
-        history: "Designed for maximum track performance while remaining street legal, the GT3 RS is a masterpiece of balance.",
+        id: 11, brand: "Porsche", name: "Porsche 911 GT3 RS (2016)", fullPrice: "$245,000", preOrderPrice: "$24,500",
+        image: "img/products/poshe.jpeg", description: "Precision engineering for the perfect driving experience.",
         specs: { speed: "310 km/h", accel: "3.3s", engine: "4.0L Flat-6", weight: "1,420 kg" }
     },
     {
-        id: 12,
-        brand: "Aston Martin",
-        name: "Aston Martin DB-10 Bond Edition (2016)",
-        fullPrice: "$3,500,000",
-        preOrderPrice: "$350,000",
-        image: "img/products/aston martin db -10.png",
-        description: "The secret agent's car of choice.",
-        history: "Specifically built for the film 'Spectre', only 10 were made, making it one of the rarest Aston Martins.",
+        id: 12, brand: "Aston Martin", name: "Aston Martin DB-10 Bond Edition (2016)", fullPrice: "$3,500,000", preOrderPrice: "$350,000",
+        image: "img/products/aston martin db -10.png", description: "The secret agent's car of choice.",
         specs: { speed: "305 km/h", accel: "4.7s", engine: "4.7L V8", weight: "1,550 kg" }
     },
     {
-        id: 13,
-        brand: "Buggatti",
-        name: "Buggatti RV Motohome (2026)",
-        fullPrice: "$23,500,000",
-        preOrderPrice: "$2,300,000",
-        image: "img/products/bugati rv.jpeg",
-        description: "Unparalleled luxury and performance in a motorhome.",
-        history: "A concept reimagining luxury travel with the heart of a hypercar.",
+        id: 13, brand: "Bugatti", name: "Bugatti RV Motorhome (2026)", fullPrice: "$23,500,000", preOrderPrice: "$2,300,000",
+        image: "img/products/bugati rv.jpeg", description: "Unparalleled luxury and performance in a motorhome.",
         specs: { speed: "200 km/h", accel: "8.0s", engine: "Quad-Turbo W16", weight: "12,000 kg" }
     },
     {
-        id: 14,
-        brand: "Fleetwood",
-        name: "Bounder Breaking Bad Edition (1986)",
-        fullPrice: "$85,000",
-        preOrderPrice: "$8,500",
-        image: "img/products/breaking bad rv.png",
-        description: "A piece of television history.",
-        history: "The iconic rolling laboratory from Albuquerque, now a collector's dream.",
+        id: 14, brand: "Fleetwood", name: "Bounder Breaking Bad Edition (1986)", fullPrice: "$85,000", preOrderPrice: "$8,500",
+        image: "img/products/breaking bad rv.png", description: "A piece of television history.",
         specs: { speed: "120 km/h", accel: "25s", engine: "V8 Gas Engine", weight: "6,500 kg" }
     },
     {
-        id: 15,
-        brand: "Land Rover",
-        name: "Land Rover Defender Station Wagon (2016)",
-        fullPrice: "$110,000",
-        preOrderPrice: "$11,000",
-        image: "img/products/suv land rover.png",
-        description: "Go anywhere, do anything.",
-        history: "The final production year of the original classic Defender shape.",
+        id: 15, brand: "Land Rover", name: "Land Rover Defender Station Wagon (2016)", fullPrice: "$110,000", preOrderPrice: "$11,000",
+        image: "img/products/suv land rover.png", description: "Go anywhere, do anything.",
         specs: { speed: "145 km/h", accel: "14s", engine: "2.2L Diesel", weight: "2,050 kg" }
     },
     {
-        id: 16,
-        brand: "Land Rover",
-        name: "Range Rover Sport (2025)",
-        fullPrice: "$210,000",
-        preOrderPrice: "$21,000",
-        image: "img/products/rr suv.png",
-        description: "The pinnacle of modern luxury SUVs.",
-        history: "Redefining performance luxury with advanced suspension and hybrid power.",
+        id: 16, brand: "Land Rover", name: "Range Rover Sport (2025)", fullPrice: "$210,000", preOrderPrice: "$21,000",
+        image: "img/products/rr suv.png", description: "The pinnacle of modern luxury SUVs.",
         specs: { speed: "250 km/h", accel: "4.3s", engine: "3.0L Hybrid I6", weight: "2,300 kg" }
     }
 ];
 
-
-// 2. PRODUCT PAGE & UI LOGIC (Keeping your original functions)
+/* =========================================
+   2. UI LOGIC (Pricing & Slideshow)
+   ========================================= */
 let slideIndex = 0;
 let slideTimer;
 
@@ -232,6 +166,7 @@ window.updatePrices = function(selectElement) {
     if (currentCar) {
         let marketPrice, prePrice, displayImg;
 
+        // Logic for specialized editions vs manual multiplier
         if (currentCar.editions && currentCar.editions[selectedEdition]) {
             marketPrice = currentCar.editions[selectedEdition].m;
             prePrice = currentCar.editions[selectedEdition].p;
@@ -240,8 +175,8 @@ window.updatePrices = function(selectElement) {
             const basePrice = Number(currentCar.fullPrice.toString().replace(/[^0-9.-]+/g, ""));
             const basePre = Number(currentCar.preOrderPrice.toString().replace(/[^0-9.-]+/g, ""));
             let mult = 1;
-            if (selectedEdition === "Primium") mult = 1.2;
-            else if (selectedEdition === "Spacial") mult = 1.5;
+            if (selectedEdition === "Premium") mult = 1.2;
+            else if (selectedEdition === "Special") mult = 1.5;
             else if (selectedEdition === "Collector") mult = 2.0;
 
             marketPrice = basePrice * mult;
@@ -249,34 +184,32 @@ window.updatePrices = function(selectElement) {
             displayImg = currentCar.image;
         }
 
-        const mainImg = document.getElementById('MainImg');
-        if(mainImg) mainImg.src = displayImg;
-        const overviewImg = document.getElementById('overview-img');
-        if(overviewImg) overviewImg.src = displayImg;
+        // DOM Updates
+        const safeSetSrc = (id, src) => { if(document.getElementById(id)) document.getElementById(id).src = src; };
+        const safeSetText = (id, text) => { if(document.getElementById(id)) document.getElementById(id).innerText = text; };
 
-        if(document.getElementById('marketPrice')) document.getElementById('marketPrice').innerText = "$" + Math.round(marketPrice).toLocaleString();
-        if(document.getElementById('prePrice')) document.getElementById('prePrice').innerText = "$" + Math.round(prePrice).toLocaleString();
-        if(document.getElementById('car-brand')) document.getElementById('car-brand').innerText = "Home / " + currentCar.brand;
-        if(document.getElementById('car-name')) document.getElementById('car-name').innerText = currentCar.name;
-        if(document.getElementById('car-description')) document.getElementById('car-description').innerText = currentCar.description;
+        safeSetSrc('MainImg', displayImg);
+        safeSetSrc('overview-img', displayImg);
+        safeSetText('marketPrice', "$" + Math.round(marketPrice).toLocaleString());
+        safeSetText('prePrice', "$" + Math.round(prePrice).toLocaleString());
+        safeSetText('car-brand', "Home / " + currentCar.brand);
+        safeSetText('car-name', currentCar.name);
+        safeSetText('car-description', currentCar.description);
 
         if (currentCar.specs) {
-            if(document.getElementById('spec-speed')) document.getElementById('spec-speed').innerText = currentCar.specs.speed;
-            if(document.getElementById('spec-accel')) document.getElementById('spec-accel').innerText = currentCar.specs.accel;
-            if(document.getElementById('spec-engine')) document.getElementById('spec-engine').innerText = currentCar.specs.engine;
-            if(document.getElementById('spec-weight')) document.getElementById('spec-weight').innerText = currentCar.specs.weight;
+            safeSetText('spec-speed', currentCar.specs.speed);
+            safeSetText('spec-accel', currentCar.specs.accel);
+            safeSetText('spec-engine', currentCar.specs.engine);
+            safeSetText('spec-weight', currentCar.specs.weight);
         }
 
+        // Update small thumbnails
         const smallImgs = document.getElementsByClassName("smallimg");
         const editionKeys = currentCar.editions ? Object.keys(currentCar.editions) : [];
         for (let i = 0; i < smallImgs.length; i++) {
             smallImgs[i].src = (currentCar.editions && editionKeys[i]) ? currentCar.editions[editionKeys[i]].img : currentCar.image;
         }
 
-        const ovThumbs = document.getElementsByClassName("ov-thumb");
-        for (let i = 0; i < ovThumbs.length; i++) {
-            ovThumbs[i].src = (currentCar.editions && editionKeys[i]) ? currentCar.editions[editionKeys[i]].img : currentCar.image;
-        }
         startAutoSlide();
     }
 }
@@ -299,6 +232,7 @@ function showSlides(n) {
     const ovThumbs = document.getElementsByClassName("ov-thumb");
     const mainOverview = document.getElementById('overview-img');
     if (ovThumbs.length === 0 || !mainOverview) return;
+    
     if (n >= ovThumbs.length) slideIndex = 0;
     if (n < 0) slideIndex = ovThumbs.length - 1;
 
@@ -311,8 +245,10 @@ function showSlides(n) {
     ovThumbs[slideIndex].style.borderColor = "#a01705";
 }
 
-// REVIEWS & FEEDBACK
-document.addEventListener('DOMContentLoaded', function() {
+/* =========================================
+   3. EVENT LISTENERS (Review Form & Clicks)
+   ========================================= */
+document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('carz-form');
     const displayArea = document.getElementById('display-area');
 
@@ -323,22 +259,10 @@ document.addEventListener('DOMContentLoaded', function() {
             const msgValue = document.getElementById('user-msg').value;
 
             const newReview = document.createElement('div');
-            newReview.style.border = "1px solid #088178";
-            newReview.style.padding = "20px";
-            newReview.style.margin = "10px 0";
-            newReview.style.borderRadius = "10px";
-            newReview.style.background = "#f0f8f0"; 
-            
+            newReview.style.cssText = "border:1px solid #088178; padding:20px; margin:10px 0; border-radius:10px; background:#f0f8f0;";
             newReview.innerHTML = `<p>"${msgValue}"</p><h4 style="color:#088178;">- ${nameValue}</h4>`;
             displayArea.prepend(newReview);
-
-            fetch(this.action, {
-                method: 'POST',
-                body: new FormData(this),
-                headers: { 'Accept': 'application/json' }
-            })
-            .then(response => { if (response.ok) form.reset(); })
-            .catch(error => console.error("Network Error:", error));
+            form.reset();
         });
     }
 
@@ -349,16 +273,16 @@ document.addEventListener('DOMContentLoaded', function() {
     for (let i = 0; i < smallImgs.length; i++) {
         smallImgs[i].onclick = function() {
             document.getElementById('MainImg').src = this.src;
-            const overviewImg = document.getElementById('overview-img');
-            if(overviewImg) overviewImg.src = this.src;
+            if(document.getElementById('overview-img')) document.getElementById('overview-img').src = this.src;
         };
     }
 });
 
+/* =========================================
+   4. FIREBASE AUTH LOGIC
+   ========================================= */
 
-// 3. UPDATED AUTH LOGIC (Signup, Login, Profile)
-
-// SIGN UP LOGIC (Updated for Name and Profile Pic)
+// SIGN UP
 const signupForm = document.getElementById('signup-form');
 if (signupForm) {
     signupForm.addEventListener('submit', async (e) => {
@@ -367,7 +291,6 @@ if (signupForm) {
         const email = document.getElementById('reg-email').value;
         const pass = document.getElementById('reg-pass').value;
         const confirmPass = document.getElementById('reg-pass-confirm').value;
-        const fileInput = document.getElementById('profile-upload'); // Assumes you added this input
 
         if (pass !== confirmPass) {
             alert("Passwords do not match!");
@@ -377,27 +300,18 @@ if (signupForm) {
         try {
             const userCredential = await createUserWithEmailAndPassword(auth, email, pass);
             const user = userCredential.user;
+            const photoURL = `https://ui-avatars.com/api/?name=${encodeURIComponent(fullName)}&background=a01705&color=fff`;
 
-            // Generate an avatar based on initials if no file uploaded
-            let photoURL = `https://ui-avatars.com/api/?name=${fullName}&background=a01705&color=fff`;
-
-            // If you later implement Firebase Storage, you would upload fileInput.files[0] here.
-
-            await updateProfile(user, {
-                displayName: fullName,
-                photoURL: photoURL
-            });
-
+            await updateProfile(user, { displayName: fullName, photoURL: photoURL });
             alert("Account created! Welcome to CARZ.");
             window.location.href = "login.html";
         } catch (error) {
-            console.error(error);
             alert(error.message);
         }
     });
 }
 
-// LOGIN LOGIC
+// LOGIN
 const loginForm = document.getElementById('login-form');
 if (loginForm) {
     loginForm.addEventListener('submit', (e) => {
@@ -410,37 +324,41 @@ if (loginForm) {
                 alert("Login Successful!");
                 window.location.href = "index.html";
             })
-            .catch((error) => {
-                alert("Login failed: " + error.message);
-            });
+            .catch((error) => alert("Login failed: " + error.message));
     });
 }
 
-// UI PROFILE MONITOR (Swaps "Sign In" with Photo)
+// AUTH MONITOR & DROPDOWN
 onAuthStateChanged(auth, (user) => {
     const authContainer = document.getElementById('auth-container');
     if (!authContainer) return;
 
     if (user) {
-        const photoURL = user.photoURL ? user.photoURL : "img/default-profile.png";
-        
+        const photoURL = user.photoURL || "img/default-profile.png";
         authContainer.innerHTML = `
-            <div class="profile-wrapper">
-                <img src="${photoURL}" class="profile-pic" id="profile-trigger" style="width:40px; height:40px; border-radius:50%; cursor:pointer;">
-                <div class="profile-dropdown" id="profile-menu">
-                    <p><strong>${user.displayName || 'Member'}</strong></p>
-                    <p style="font-size: 11px; color: gray;">${user.email}</p>
-                    <hr>
-                    <button id="logout-btn" style="background:#a01705; color:white; border:none; padding:5px 10px; cursor:pointer; width:100%;">Logout</button>
+            <div class="profile-wrapper" style="position: relative; display: inline-block;">
+                <img src="${photoURL}" class="profile-pic" id="profile-trigger" style="width:40px; height:40px; border-radius:50%; cursor:pointer; border: 2px solid #a01705;">
+                <div class="profile-dropdown" id="profile-menu" style="display:none; position:absolute; right:0; top: 50px; background:white; border:1px solid #ccc; padding:15px; border-radius:8px; z-index:1000; min-width:180px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);">
+                    <p style="margin:0;"><strong>${user.displayName || 'Member'}</strong></p>
+                    <p style="font-size: 11px; color: gray; margin-bottom:10px;">${user.email}</p>
+                    <hr style="border:0.5px solid #eee;">
+                    <button id="logout-btn" style="background:#a01705; color:white; border:none; padding:8px 10px; cursor:pointer; width:100%; border-radius:4px;">Logout</button>
                 </div>
             </div>
         `;
 
+        const trigger = document.getElementById('profile-trigger');
+        const menu = document.getElementById('profile-menu');
+        
+        trigger.addEventListener('click', (e) => {
+            e.stopPropagation();
+            menu.style.display = menu.style.display === 'none' ? 'block' : 'none';
+        });
+
+        document.addEventListener('click', () => { menu.style.display = 'none'; });
+
         document.getElementById('logout-btn').addEventListener('click', () => {
-            signOut(auth).then(() => {
-                alert("Logged out!");
-                window.location.reload();
-            });
+            signOut(auth).then(() => window.location.reload());
         });
     }
 });
