@@ -1830,3 +1830,8 @@ body {
     cursor: pointer;
     width: 100%;
 }
+
+
+.profile-wrapper { position: relative; display: inline-block; }
+.profile-dropdown { display: none; position: absolute; right: 0; background: white; border: 1px solid #ddd; padding: 10px; z-index: 999; width: 150px; text-align: center; }
+.profile-wrapper:hover .profile-dropdown { display: block; }
