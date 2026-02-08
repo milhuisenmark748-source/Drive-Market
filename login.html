@@ -53,8 +53,45 @@
     </div>
 </section>
 
-<script type="module" src="firebase.auth.js"></script>
-<script type="module" src="java.js"></script>
+<script type="module">
+  // 1. Import Firebase
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-app.js";
+  import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-auth.js";
+
+  // 2. Your Firebase Configuration
+  const firebaseConfig = {
+    apiKey: "AIzaSyBV6lGkHxwXMyvsGlga4_MWVs4BAGI5SGU",
+    authDomain: "wad---drivemarket.firebaseapp.com",
+    projectId: "wad---drivemarket",
+    storageBucket: "wad---drivemarket.firebasestorage.app",
+    messagingSenderId: "895979359305",
+    appId: "1:895979359305:web:684c43c2b0384308bc4398"
+  };
+
+  // 3. Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+
+  // 4. Login Action
+  const loginForm = document.getElementById('login-form');
+  loginForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    
+    const email = document.getElementById('login-username').value;
+    const password = document.getElementById('login-password').value;
+
+    signInWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        alert("Welcome back! Accessing your garage...");
+        window.location.href = "index.html"; // Redirect to homepage on success
+      })
+      .catch((error) => {
+        console.error(error);
+        // This will tell you if the password is wrong or the user doesn't exist
+        alert("Login failed: " + error.message);
+      });
+  });
+</script>
 
 </body>
 </html>
