@@ -1,7 +1,15 @@
 import { auth } from './firebase.auth.js';
-import { createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-auth.js";
+import { 
+    createUserWithEmailAndPassword, 
+    signInWithEmailAndPassword, 
+    onAuthStateChanged, 
+    signOut, 
+    updateProfile 
+} from "https://www.gstatic.com/firebasejs/12.9.0/firebase-auth.js";
 
-// 2. CAR DATA DATABASE
+
+// 1. CAR DATA DATABASE (Keeping your original data)
+
 const carData = [
     {
         id: 1,
@@ -212,7 +220,7 @@ const carData = [
 ];
 
 
-// 3. PRODUCT PAGE LOGIC
+// 2. PRODUCT PAGE & UI LOGIC (Keeping your original functions)
 let slideIndex = 0;
 let slideTimer;
 
@@ -243,7 +251,6 @@ window.updatePrices = function(selectElement) {
 
         const mainImg = document.getElementById('MainImg');
         if(mainImg) mainImg.src = displayImg;
-
         const overviewImg = document.getElementById('overview-img');
         if(overviewImg) overviewImg.src = displayImg;
 
@@ -270,7 +277,6 @@ window.updatePrices = function(selectElement) {
         for (let i = 0; i < ovThumbs.length; i++) {
             ovThumbs[i].src = (currentCar.editions && editionKeys[i]) ? currentCar.editions[editionKeys[i]].img : currentCar.image;
         }
-        
         startAutoSlide();
     }
 }
@@ -292,7 +298,6 @@ window.manualSlide = function(n) {
 function showSlides(n) {
     const ovThumbs = document.getElementsByClassName("ov-thumb");
     const mainOverview = document.getElementById('overview-img');
-    
     if (ovThumbs.length === 0 || !mainOverview) return;
     if (n >= ovThumbs.length) slideIndex = 0;
     if (n < 0) slideIndex = ovThumbs.length - 1;
@@ -301,14 +306,12 @@ function showSlides(n) {
         ovThumbs[i].classList.remove("active");
         ovThumbs[i].style.borderColor = "transparent";
     }
-
     mainOverview.src = ovThumbs[slideIndex].src;
     ovThumbs[slideIndex].classList.add("active");
     ovThumbs[slideIndex].style.borderColor = "#a01705";
 }
 
-
-// 4. REVIEWS & FEEDBACK
+// REVIEWS & FEEDBACK
 document.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('carz-form');
     const displayArea = document.getElementById('display-area');
@@ -326,11 +329,7 @@ document.addEventListener('DOMContentLoaded', function() {
             newReview.style.borderRadius = "10px";
             newReview.style.background = "#f0f8f0"; 
             
-            newReview.innerHTML = `
-                <p>"${msgValue}"</p>
-                <h4 style="color:#088178;">- ${nameValue}</h4>
-            `;
-
+            newReview.innerHTML = `<p>"${msgValue}"</p><h4 style="color:#088178;">- ${nameValue}</h4>`;
             displayArea.prepend(newReview);
 
             fetch(this.action, {
@@ -338,18 +337,13 @@ document.addEventListener('DOMContentLoaded', function() {
                 body: new FormData(this),
                 headers: { 'Accept': 'application/json' }
             })
-            .then(response => {
-                if (response.ok) form.reset();
-            })
+            .then(response => { if (response.ok) form.reset(); })
             .catch(error => console.error("Network Error:", error));
         });
     }
 
     const select = document.getElementById('edition-select');
-    if (select) {
-        select.value = "standard";
-        updatePrices(select);
-    }
+    if (select) { select.value = "standard"; updatePrices(select); }
 
     const smallImgs = document.getElementsByClassName("smallimg");
     for (let i = 0; i < smallImgs.length; i++) {
@@ -362,32 +356,44 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 
-import { auth } from './firebase.auth.js';
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-auth.js";
+// 3. UPDATED AUTH LOGIC (Signup, Login, Profile)
 
-// SIGN UP LOGIC
+// SIGN UP LOGIC (Updated for Name and Profile Pic)
 const signupForm = document.getElementById('signup-form');
 if (signupForm) {
-    signupForm.addEventListener('submit', (e) => {
+    signupForm.addEventListener('submit', async (e) => {
         e.preventDefault();
+        const fullName = document.getElementById('reg-name').value;
         const email = document.getElementById('reg-email').value;
         const pass = document.getElementById('reg-pass').value;
         const confirmPass = document.getElementById('reg-pass-confirm').value;
+        const fileInput = document.getElementById('profile-upload'); // Assumes you added this input
 
         if (pass !== confirmPass) {
             alert("Passwords do not match!");
             return;
         }
 
-        createUserWithEmailAndPassword(auth, email, pass)
-            .then((userCredential) => {
-                alert("Account created! Welcome to CARZ.");
-                window.location.href = "login.html";
-            })
-            .catch((error) => {
-                console.error(error);
-                alert(error.message);
+        try {
+            const userCredential = await createUserWithEmailAndPassword(auth, email, pass);
+            const user = userCredential.user;
+
+            // Generate an avatar based on initials if no file uploaded
+            let photoURL = `https://ui-avatars.com/api/?name=${fullName}&background=a01705&color=fff`;
+
+            // If you later implement Firebase Storage, you would upload fileInput.files[0] here.
+
+            await updateProfile(user, {
+                displayName: fullName,
+                photoURL: photoURL
             });
+
+            alert("Account created! Welcome to CARZ.");
+            window.location.href = "login.html";
+        } catch (error) {
+            console.error(error);
+            alert(error.message);
+        }
     });
 }
 
@@ -396,44 +402,40 @@ const loginForm = document.getElementById('login-form');
 if (loginForm) {
     loginForm.addEventListener('submit', (e) => {
         e.preventDefault();
-        const email = document.getElementById('login-username').value; // Ensure this ID matches your HTML
+        const email = document.getElementById('login-username').value;
         const password = document.getElementById('login-password').value;
 
         signInWithEmailAndPassword(auth, email, password)
-            .then((userCredential) => {
+            .then(() => {
                 alert("Login Successful!");
                 window.location.href = "index.html";
             })
             .catch((error) => {
-                console.error(error);
                 alert("Login failed: " + error.message);
             });
     });
 }
 
-import { auth } from './firebase.auth.js';
-import { onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-auth.js";
-
-// Monitor Login Status
+// UI PROFILE MONITOR (Swaps "Sign In" with Photo)
 onAuthStateChanged(auth, (user) => {
     const authContainer = document.getElementById('auth-container');
-    
+    if (!authContainer) return;
+
     if (user) {
-        // User is signed in - Replace "Sign In" with a Profile Photo
-        // Using a placeholder image since we haven't uploaded a custom one yet
-        const photoURL = user.photoURL ? user.photoURL : "img/default-profile.png"; 
+        const photoURL = user.photoURL ? user.photoURL : "img/default-profile.png";
         
         authContainer.innerHTML = `
             <div class="profile-wrapper">
-                <img src="${photoURL}" class="profile-pic" id="profile-trigger">
+                <img src="${photoURL}" class="profile-pic" id="profile-trigger" style="width:40px; height:40px; border-radius:50%; cursor:pointer;">
                 <div class="profile-dropdown" id="profile-menu">
-                    <p>${user.email}</p>
-                    <button id="logout-btn">Logout</button>
+                    <p><strong>${user.displayName || 'Member'}</strong></p>
+                    <p style="font-size: 11px; color: gray;">${user.email}</p>
+                    <hr>
+                    <button id="logout-btn" style="background:#a01705; color:white; border:none; padding:5px 10px; cursor:pointer; width:100%;">Logout</button>
                 </div>
             </div>
         `;
 
-        // Logout Logic
         document.getElementById('logout-btn').addEventListener('click', () => {
             signOut(auth).then(() => {
                 alert("Logged out!");
