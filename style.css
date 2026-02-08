@@ -1776,4 +1776,57 @@ body {
 
 #signup-form h2 {
     color: #a01705; /* CARZ Red for the heading */
+
+}
+
+
+
+
+
+
+
+/* Profile Picture Styling */
+.profile-pic {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 2px solid #a01705; /* Matching your red theme */
+    cursor: pointer;
+    object-fit: cover;
+    transition: 0.3s;
+}
+
+.profile-pic:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 10px rgba(160, 23, 5, 0.5);
+}
+
+/* Dropdown Menu (Optional) */
+.profile-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+.profile-dropdown {
+    display: none;
+    position: absolute;
+    right: 0;
+    background: #fff;
+    border: 1px solid #ddd;
+    padding: 10px;
+    z-index: 1000;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.profile-wrapper:hover .profile-dropdown {
+    display: block;
+}
+
+#logout-btn {
+    background: #a01705;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    width: 100%;
 }
