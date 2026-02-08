@@ -29,7 +29,7 @@
             <input type="password" id="reg-pass" placeholder="Password" required>
             <input type="password" id="reg-pass-confirm" placeholder="Confirm Password" required>
             
-            <button class="normal login-btn">Register Now</button>
+            <button type="submit" class="normal login-btn">Register Now</button>
             <p>Already a member? <a href="login.html">Login here</a></p>
         </form>
 
@@ -51,8 +51,51 @@
         </div>
     </section>
 
-<script type="module" src="firebase.auth.js"></script>
-<script type="module" src="java.js"></script>
+<script type="module">
+  // 1. Import Firebase
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-app.js";
+  import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-auth.js";
+
+  // 2. Your Config
+  const firebaseConfig = {
+    apiKey: "AIzaSyBV6lGkHxwXMyvsGlga4_MWVs4BAGI5SGU",
+    authDomain: "wad---drivemarket.firebaseapp.com",
+    projectId: "wad---drivemarket",
+    storageBucket: "wad---drivemarket.firebasestorage.app",
+    messagingSenderId: "895979359305",
+    appId: "1:895979359305:web:684c43c2b0384308bc4398"
+  };
+
+  // 3. Initialize
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+
+  // 4. Signup Action
+  const signupForm = document.getElementById('signup-form');
+  signupForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    
+    const email = document.getElementById('reg-email').value;
+    const pass = document.getElementById('reg-pass').value;
+    const confirmPass = document.getElementById('reg-pass-confirm').value;
+
+    if (pass !== confirmPass) {
+      alert("Passwords do not match!");
+      return;
+    }
+
+    createUserWithEmailAndPassword(auth, email, pass)
+      .then((userCredential) => {
+        alert("Account created! Welcome to CARZ.");
+        window.location.href = "login.html"; // Success redirect
+      })
+      .catch((error) => {
+        // This will tell you EXACTLY why it failed (e.g. Email already in use)
+        console.error(error);
+        alert("Error: " + error.message);
+      });
+  });
+</script>
 
 </body>
 </html>
